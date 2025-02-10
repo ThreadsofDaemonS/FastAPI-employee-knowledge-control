@@ -1,0 +1,35 @@
+# Исключаем виртуальное окружение
+venv/
+.venv/
+
+# Игнорируем зависимости, если они не нужны в сборке
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Исключаем IDE-файлы
+.idea/
+.vscode/
+
+# Исключаем системные файлы
+.DS_Store
+Thumbs.db
+
+# Исключаем файлы Git
+.git
+.gitignore
+
+# Исключаем файлы логов и временные файлы
+logs/
+*.log
+*.swp
+*.swo
+*.bak
+
+# Исключаем локальные конфигурационные файлы
+# .env
+.env.local
+.env.development
+.env.production
+.env.test

@@ -9,12 +9,13 @@ This service will be useful for companies that need to control the knowledge of 
    cd FastAPI-employee-knowledge-control
     ```
    
-2. Install requirements
+2. Run dockerfile
 ```commandline
-pip install -r requirements.txt
+docker build -t my-fastapi-app .
+docker run -d -p 8000:8000 --name fastapi_container my-fastapi-app
 ```
 
-3. Run uvicorn
+3. For running tests
 ```commandline
-uvicorn main:app --reload
+docker exec -it fastapi_container pytest tests/
 ```
