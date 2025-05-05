@@ -11,11 +11,11 @@ This service will be useful for companies that need to control the knowledge of 
    
 2. Run dockerfile
 ```commandline
-docker build -t my-fastapi-app .
-docker run -d -p 8000:8000 --name fastapi_container my-fastapi-app
+docker-compose up -d --build
+
 ```
 
 3. For running tests
 ```commandline
-docker exec -it fastapi_container pytest tests/
+docker exec -it docker exec -it fastapi-employee-knowledge-control-app-1 pytest tests/ pytest tests/
 ```
