@@ -15,7 +15,20 @@ docker-compose up -d --build
 
 ```
 
-3. For running tests
+
+3. # 💾 Database Migrations (Alembic)
+
+### 📦 Generate a new migration
+```bash
+docker-compose exec app alembic revision --autogenerate -m "your message"
+```
+
+4. Apply the latest migration
+```bash
+docker-compose exec app alembic upgrade head
+```
+
+5. For running tests
 ```commandline
-docker exec -it docker exec -it fastapi-employee-knowledge-control-app-1 pytest tests/ pytest tests/
+docker-compose exec app pytest tests/
 ```
