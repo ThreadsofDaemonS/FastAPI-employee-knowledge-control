@@ -9,9 +9,11 @@ from decouple import config
 from app.db.postgres import get_db
 from app.db.redis import get_redis
 from app.core.logger import logger  # <-- логгер
+from app.routers import users
+
 
 app = FastAPI()
-
+app.include_router(users.router)
 # CORS
 origins = config("CORS_ORIGINS", default="http://localhost:8080").split(",")
 app.add_middleware(

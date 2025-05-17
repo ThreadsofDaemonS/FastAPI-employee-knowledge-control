@@ -1,41 +1,42 @@
 # app/schemas/user.py
-from pydantic import BaseModel, EmailStr
+
+from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional, List
 from datetime import datetime
 
 
-# Base user data
+# 🔹 Общая базовая схема
 class UserBase(BaseModel):
     email: EmailStr
     username: str
     full_name: Optional[str] = None
 
 
-# Sign-up request schema
+# 🔐 Схема создания пользователя
 class SignUpRequest(UserBase):
     password: str
 
 
-# Sign-in request schema
+# 🔑 Схема для входа (если будет логин)
 class SignInRequest(BaseModel):
     email: EmailStr
     password: str
 
 
-# Update request schema
+# ✏️ Обновление пользователя
 class UserUpdateRequest(BaseModel):
     full_name: Optional[str] = None
+    password: Optional[str] = None
 
 
-# Single user response schema
+# 📄 Ответ: один пользователь
 class UserDetailResponse(UserBase):
     id: int
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)  # ✅ Актуальный формат
 
 
-# List of users response
+# 📋 Ответ: список пользователей
 class UsersListResponse(BaseModel):
     users: List[UserDetailResponse]
